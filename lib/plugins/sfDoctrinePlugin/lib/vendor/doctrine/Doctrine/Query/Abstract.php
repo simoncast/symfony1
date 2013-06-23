@@ -1150,7 +1150,6 @@ abstract class Doctrine_Query_Abstract
 
         if ($componentsBefore !== $componentsAfter) {
           return $this->array_diff_assoc_recursive($componentsAfter,$componentsBefore);                
-          //return array_diff_assoc($componentsAfter, $componentsBefore);
         } else {
           return $componentsAfter;
         }
