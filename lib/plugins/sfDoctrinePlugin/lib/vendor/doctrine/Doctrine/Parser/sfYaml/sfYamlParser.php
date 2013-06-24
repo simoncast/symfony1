@@ -8,7 +8,10 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfYamlInline.php');
+if(!class_exists('sfYamlInline', false))
+{
+  require_once(dirname(__FILE__).'/sfYamlInline.php');
+}
 
 if (!defined('PREG_BAD_UTF8_OFFSET_ERROR'))
 {

@@ -211,6 +211,13 @@ abstract class Doctrine_Connection extends Doctrine_Configurable implements Coun
                 $this->options['other'] = array(Doctrine_Core::ATTR_PERSISTENT => $adapter['persistent']);
             }
 
+            $this->options['pdo_class'] = isset($adapter['pdo_class']) ? $adapter['pdo_class'] : 
+                                                  $manager->getAttribute(Doctrine_Core::ATTR_PDO_CLASS);
+            
+            if(!class_exists($this->options['pdo_class']))
+            {
+              throw new Doctrine_Connection_Exception(sprintf('PDO class "%s" does not exist.', $this->options['pdo_class']));
+            }            
         }
 
         $this->setParent($manager);
@@ -462,11 +469,14 @@ abstract class Doctrine_Connection extends Doctrine_Configurable implements Coun
 
         $e     = explode(':', $this->options['dsn']);
         $found = false;
-
+        $class = $this->getOption('pdo_class');        
+        if(!$class) {
+            $class = 'PDO';
+        }
         if (extension_loaded('pdo')) {
             if (in_array($e[0], self::getAvailableDrivers())) {
                 try {
-                    $this->dbh = new PDO($this->options['dsn'], $this->options['username'],
+                    $this->dbh = new $class($this->options['dsn'], $this->options['username'],
                                      (!$this->options['password'] ? '':$this->options['password']), $this->options['other']);
 
                     $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -1204,7 +1214,7 @@ abstract class Doctrine_Connection extends Doctrine_Configurable implements Coun
      */
     public function createQuery()
     {
-        return Doctrine_Query::create();
+        return Doctrine_Query::create($this);
     }
 
     /**

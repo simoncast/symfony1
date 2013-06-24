@@ -205,13 +205,13 @@ abstract class Doctrine_Query_Abstract
      */
     protected $_queryComponents = array();
 
-	/**
+  /**
      * Stores the root DQL alias
      *
      * @var string
      */
     protected $_rootAlias = '';
-	
+  
     /**
      * @var integer $type                   the query type
      *
@@ -562,7 +562,7 @@ abstract class Doctrine_Query_Abstract
     public function fixArrayParameterValues($params = array())
     {
         $i = 0;
-	
+  
         foreach ($params as $param) {
             if (is_array($param)) {
                 $c = count($param);

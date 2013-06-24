@@ -57,6 +57,17 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
     protected $_initialized = false;
 
     /**
+     * __construct
+     *
+     * @param string $options
+     * @return void
+     */
+    public function __construct($options)
+    {
+        $this->_options = Doctrine_Lib::arrayDeepMerge($this->_options, $options);
+    }
+
+    /**
      * An alias for getOption
      *
      * @param string $option
@@ -130,6 +141,60 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
     }
 
     /**
+     * Sets primary key for the table. Honors the Doctrine_Core::ATTR_DEFAULT_IDENTIFIER_OPTIONS
+     * setting.
+     *
+     * @return void
+     */
+    public function setupPrimaryKey()
+    {
+        list($name, $type, $length, $definition) = $this->getIdentifierDefinition();
+        $this->hasColumn($name, $type, $length, $definition, true);
+    }
+
+    /**
+     * Returns an array of identifier options as an array:
+     *
+     *  - name
+     *  - type
+     *  - length
+     *  - definition
+     *
+     * @return array
+     */
+    public function getIdentifierDefinition()
+    {
+        $identifierOptions = $this->getTable()->getAttribute(Doctrine_Core::ATTR_DEFAULT_IDENTIFIER_OPTIONS);
+
+        $name = (isset($identifierOptions['name']) && $identifierOptions['name']) ? $identifierOptions['name'] : 'id';
+        $name = sprintf($name, $this->getTable()->getTableName());
+
+        $type = (isset($identifierOptions['type']) && $identifierOptions['type']) ? $identifierOptions['type'] : 'integer';
+        $length = (isset($identifierOptions['length']) && $identifierOptions['length']) ? $identifierOptions['length'] : 8;
+
+        $definition = array(
+            'length' => $length,
+            'autoincrement' => isset($identifierOptions['autoincrement']) ? $identifierOptions['autoincrement'] : true,
+            'primary' => isset($identifierOptions['primary']) ? $identifierOptions['primary'] : true);
+
+        unset($identifierOptions['name'], $identifierOptions['type'], $identifierOptions['length']);
+        foreach($identifierOptions as $key => $value)
+        {
+          if(!isset($definition[$key]) || !$definition[$key])
+          {
+            $definition[$key] = $value;
+          }
+        }
+
+        return array(
+            $name,
+            $type,
+            $length,
+            $definition
+        );
+    }
+
+    /**
      * Initialize the plugin. Call in Doctrine_Template setTableDefinition() in order to initiate a generator in a template
      *
      * @see Doctrine_Template_I18n
@@ -141,7 +206,7 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
       	if ($this->_initialized) {
       	    return false;
       	}
-        
+          
         $this->_initialized = true;
 
         $this->initOptions();
@@ -162,24 +227,24 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
 
         // check that class doesn't exist (otherwise we cannot create it)
         if ($this->_options['generateFiles'] === false && class_exists($this->_options['className'])) {
-            $this->_table = Doctrine_Core::getTable($this->_options['className']);
+            $this->_table = Doctrine_Core::getTable($this->_options['className']);            
+            $this->buildRelation();
             return false;
         }
-
+        
         $this->buildTable();
-
         $fk = $this->buildForeignKeys($this->_options['table']);
-
-        $this->_table->setColumns($fk);
-
-        $this->buildRelation();
+        if(count($fk))
+        {
+          $this->_table->setColumns($fk);
+        }
 
         $this->setTableDefinition();
-        $this->setUp();
+        $this->setUp();        
+        $this->buildChildDefinitions();
+        $this->buildRelation();
 
         $this->generateClassFromTable($this->_table);
-
-        $this->buildChildDefinitions();
 
         $this->_table->initIdentifier();
     }
@@ -258,9 +323,10 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
                 $this->_table->addTemplate(get_class($child), $child);
 
                 $child->setInvoker($this);
-                $child->setTable($this->_table);
+                $child->setTable($this->_table);    
+                $child->setUp();             
                 $child->setTableDefinition();
-                $child->setUp();
+                   
             } else {
                 $this->_table->addGenerator($child, get_class($child));
                 $child->initialize($this->_table);
@@ -420,6 +486,74 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
     }
 
     /**
+     * Returns an array of passable options for generators
+     *
+     * @return array
+     */
+    public function getPassableOptions()
+    {
+        $options = $this->_options;
+        unset($options['table'], $options['pluginTable'], $options['className']);
+        unset($options['generateFiles'], $options['generatePath'], $options['children']);
+        unset($options['builderOptions'], $options['identifier']);
+        return $options;
+    }
+    
+    /**
+     * Returns definition of this table
+     * 
+     * @param Doctrine_Table $table
+     * @return array     
+     */
+    public function getTableDefinition($table = null)
+    {
+        if(!$table) {
+          $table = $this->_table;
+        }
+      
+        $definition = array();
+        $definition['columns']   = $table->getColumns();
+        $definition['tableName'] = $table->getTableName();
+        $definition['indexes'] = $table->getOption('indexes');
+        $definition['indexBy'] = $table->getBoundQueryPart('indexBy');
+
+        $definition['className'] = $this->_options['className'];
+        $definition['toString'] = isset($this->_options['toString']) ? $this->_options['toString'] : false;
+
+        if (isset($this->_options['listeners'])) {
+            $definition['listeners'] = $this->_options['listeners'];
+        }
+       
+        // relations
+        $definition['relations'] = $table->getRelations();
+
+        // table options
+        $definition['options'] = array();
+        foreach(array('type', 'collate', 'charset') as $option)
+        {
+          $value = $table->getOption($option);
+          if(is_null($value))
+          {
+            continue;
+          }
+
+          $definition['options'][$option] = $value;
+        }        
+        
+        $definition['actAs'] = array();
+        
+        // templates
+        foreach($table->getTemplates() as $template)
+        {
+          $options = $template->getOriginalOptions();          
+          // build actAs statement
+          $definition['actAs'][get_class($template)] = count($options) ? $options : null;
+        }
+        
+        return $definition;
+    }
+    
+    /**
      * Generate a Doctrine_Record from a populated Doctrine_Table instance
      *
      * @param Doctrine_Table $table
@@ -427,14 +561,9 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
      */
     public function generateClassFromTable(Doctrine_Table $table)
     {
-        $definition = array();
-        $definition['columns'] = $table->getColumns();
-        $definition['tableName'] = $table->getTableName();
-        $definition['actAs'] = $table->getTemplates();
-
-        return $this->generateClass($definition);
+        return $this->generateClass($this->getTableDefinition($table));
     }
-
+    
     /**
      * Generates the class definition for plugin class
      *
@@ -467,4 +596,35 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
             eval($def);
         }
     }
+    
+    /**
+     * Fetches all generators recursively for given table
+     *
+     * @param Doctrine_Table $table     table object to retrieve the generators from
+     * @return array                    an array of Doctrine_Record_Generator objects
+     */
+    public function getAllGenerators(Doctrine_Table $table)
+    {
+      $generators = array();
+
+      foreach($table->getGenerators() as $name => $generator)
+      {
+        if($generator === null)
+        {
+          continue;
+        }
+
+        $generators[] = $generator;
+
+        $generatorTable = $generator->getTable();
+
+        if($generatorTable instanceof Doctrine_Table)
+        {
+          $generators = array_merge($generators, $this->getAllGenerators($generatorTable));
+        }
+      }
+
+      return $generators;
+    }
+  
 }

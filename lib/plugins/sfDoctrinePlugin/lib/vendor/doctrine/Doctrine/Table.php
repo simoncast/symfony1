@@ -2341,7 +2341,17 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
                 case 'array':
                 case 'object':
                     if (is_string($value)) {
-                        $value = empty($value) ? null:unserialize($value);
+                        if( empty($value)) {
+                            $value = null;
+                        }
+                        // check for base64 encoded serialized data
+                        elseif (strpos($value, ':') !== 1 && strpos($value, ';') !== 1) {
+                            $value = unserialize(base64_decode($value));
+                        }
+                        else
+                        {
+                            $value = unserialize($value);
+                        }
 
                         if ($value === false) {
                             throw new Doctrine_Table_Exception('Unserialization of ' . $fieldName . ' failed.');

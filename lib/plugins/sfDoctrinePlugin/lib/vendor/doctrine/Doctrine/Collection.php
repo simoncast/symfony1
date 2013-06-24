@@ -549,7 +549,7 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
 
         if ($rel instanceof Doctrine_Relation_LocalKey || $rel instanceof Doctrine_Relation_ForeignKey) {
             foreach ($this->data as $record) {
-                $list[] = $record[$rel->getLocal()];
+                $list[] = $record[$rel->getLocalFieldName()];
             }
         } else {
             foreach ($this->data as $record) {
@@ -583,7 +583,7 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
         $rel     = $this->_table->getRelation($name);
         $table   = $rel->getTable();
         $foreign = $rel->getForeign();
-        $local   = $rel->getLocal();
+        $local   = $rel->getLocalFieldName();
 
         if ($rel instanceof Doctrine_Relation_LocalKey) {
             foreach ($this->data as $key => $record) {

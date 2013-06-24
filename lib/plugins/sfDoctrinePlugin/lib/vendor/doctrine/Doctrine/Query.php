@@ -1339,12 +1339,15 @@ class Doctrine_Query extends Doctrine_Query_Abstract implements Countable
         if ($this->_type === self::SELECT) {
             foreach ($this->_queryComponents as $alias => $map) {
                 $sqlAlias = $this->getSqlTableAlias($alias);
-                if (isset($map['relation'])) {
-                    $orderBy = $map['relation']->getOrderByStatement($sqlAlias, true);
-                    if ($orderBy == $map['relation']['orderBy']) {
-                        if (isset($map['ref'])) {
-                            $orderBy = $map['relation']['refTable']->processOrderBy($sqlAlias, $map['relation']['orderBy'], true);
-                        } else {
+                  if (isset($map['relation'])) { 
+                      if (isset($map['ref'])) {
+                        $orderBy = $map['relation']['refTable']->processOrderBy($sqlAlias, $map['relation']['orderBy'], true);
+                        if ($map['relation']['orderBy'] && $orderBy == $map['relation']['orderBy']) {
+                            $orderBy = $map['relation']->getOrderByStatement($sqlAlias, true);
+                        }
+                    } else {
+                        $orderBy = $map['relation']->getOrderByStatement($sqlAlias, true);
+                        if ($orderBy == $map['relation']['orderBy']) {
                             $orderBy = null;
                         }
                     }
