@@ -45,7 +45,12 @@ class sfTesterRequest extends sfTester
    */
   public function isParameter($key, $value)
   {
-    $this->tester->is($this->request->getParameter($key), $value, sprintf('request parameter "%s" is "%s"', $key, $value));
+    if(is_array($value))
+    {
+      $this->tester->is_deeply($this->request->getParameter($key),$value,sprintf('request parameter "%s" matches',$key));
+    } else {
+      $this->tester->is($this->request->getParameter($key), $value, sprintf('request parameter "%s" is "%s"', $key, $value));
+    }
 
     return $this->getObjectToReturn();
   }
