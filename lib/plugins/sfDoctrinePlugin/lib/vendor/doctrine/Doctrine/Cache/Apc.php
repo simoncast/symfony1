@@ -108,8 +108,12 @@ class Doctrine_Cache_Apc extends Doctrine_Cache_Driver
         $keys = array();
 
         //var_dump($ci);
-        foreach ($ci['cache_list'] as $entry) {
-          $keys[] = $entry['key'];
+        sfContext::getInstance()->getLogger()->err($ci);
+        if(array_key_exists('cache_list',$ci))
+        {
+            foreach ($ci['cache_list'] as $entry) {
+              $keys[] = $entry['key'];
+            }
         }
         return $keys;
     }
