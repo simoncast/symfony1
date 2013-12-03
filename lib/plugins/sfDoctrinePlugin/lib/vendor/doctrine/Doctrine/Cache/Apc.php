@@ -107,8 +107,9 @@ class Doctrine_Cache_Apc extends Doctrine_Cache_Driver
         $ci = apc_cache_info('user');
         $keys = array();
 
+        //var_dump($ci);
         foreach ($ci['cache_list'] as $entry) {
-          $keys[] = $entry['info'];
+          $keys[] = $entry['key'];
         }
         return $keys;
     }
