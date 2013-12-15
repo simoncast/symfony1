@@ -168,15 +168,6 @@ class sfViewCacheManager
       }
 
       $cacheKey .= $this->convertParametersToKey($params);
-      $unique = $this->getUnique($internalUri);
-      if($unique)
-      {
-        $unique_key = $this->context->getUser()->getAttribute($unique['attribute'],'',$unique['holder']);
-        if(!empty($unique_key))
-        {
-          $cacheKey .= '/'.$unique['attribute'].'/'.$unique_key;
-        }
-      }
     }
 
     // add vary headers
@@ -331,7 +322,6 @@ class sfViewCacheManager
       'clientLifeTime' => isset($options['clientLifeTime']) ? $options['clientLifeTime'] : $options['lifeTime'],
       'contextual'     => isset($options['contextual']) ? $options['contextual'] : false,
       'vary'           => isset($options['vary']) ? $options['vary'] : array(),
-      'unique'         => isset($options['unique']) ? $options['unique'] : array(),
     );
   }
 
@@ -410,18 +400,6 @@ class sfViewCacheManager
   }
 
   /**
-   * Retrieves unique key identifier from the cache option list
-   * 
-   * @param string $internalUri Internal uniform resource identifier
-   *
-   * @return array consisting of attribute and attribute holder array('attribute'=>some attribute,'attribute_holder'=>some holder)
-   */
-  public function getUnique($internalUri)
-  {
-    return $this->getCacheConfig($internalUri, 'unique',array());
-  }
-
-  /**
    * Gets a config option from the cache.
    *
    * @param string $internalUri   Internal uniform resource identifier
@@ -449,7 +427,8 @@ class sfViewCacheManager
     else if (isset($this->cacheConfig[$params['module']]['DEFAULT'][$key]))
     {
       $value = $this->cacheConfig[$params['module']]['DEFAULT'][$key];
-    } 
+    }
+
     return $value;
   }
 

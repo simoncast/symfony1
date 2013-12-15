@@ -97,17 +97,9 @@ class sfCacheConfigHandler extends sfYamlConfigHandler
       $vary = array($vary);
     }
 
-    // unique
-    $unique = $this->getConfigValue('unique',$actionName,array());
-
-    if(!is_array($unique))
-    {
-      $unqiue = array($unique);
-    }
-
     // add cache information to cache manager
-    $data[] = sprintf("\$this->addCache(\$moduleName, '%s', array('withLayout' => %s, 'lifeTime' => %s, 'clientLifeTime' => %s, 'contextual' => %s, 'vary' => %s, 'unique'=> %s));\n",
-                      $actionName, $withLayout, $lifeTime, $clientLifetime, $contextual, str_replace("\n", '', var_export($vary, true)), str_replace("\n",'',var_export($unique,true)));
+    $data[] = sprintf("\$this->addCache(\$moduleName, '%s', array('withLayout' => %s, 'lifeTime' => %s, 'clientLifeTime' => %s, 'contextual' => %s, 'vary' => %s));\n",
+                      $actionName, $withLayout, $lifeTime, $clientLifetime, $contextual, str_replace("\n", '', var_export($vary, true)));
 
     return implode("\n", $data);
   }
