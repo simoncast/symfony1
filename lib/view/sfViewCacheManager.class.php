@@ -117,7 +117,7 @@ class sfViewCacheManager
    * @return string The cache key
    *                If some of the parameters contained wildcards (* or **), the generated key will also have wildcards
    */
-  public function generateCacheKey($internalUri, $hostName = '', $vary = '', $contextualPrefix = '',$unique = '')
+  public function generateCacheKey($internalUri, $hostName = '', $vary = '', $contextualPrefix = '')
   {
     if ($callable = sfConfig::get('sf_cache_namespace_callable'))
     {
@@ -168,18 +168,13 @@ class sfViewCacheManager
       }
 
       $cacheKey .= $this->convertParametersToKey($params);
-      $unique_config = $this->getUnique($internalUri);
-      if($unique_config)
+      $unique = $this->getUnique($internalUri);
+      if($unique)
       {
-        $unique_key = $this->context->getUser()->getAttribute($unique_config['attribute'],'',$unique_config['holder']);
+        $unique_key = $this->context->getUser()->getAttribute($unique['attribute'],'',$unique['holder']);
         if(!empty($unique_key))
         {
-          if($unique != '')
-          {
-            $cacheKey .= '/'.$unique_config['attribute'].'/'.$unique;
-          } else {
-            $cacheKey .= '/'.$unique_config['attribute'].'/'.$unique_key;  
-          }
+          $cacheKey .= '/'.$unique['attribute'].'/'.$unique_key;
         }
       }
     }
@@ -635,14 +630,14 @@ class sfViewCacheManager
    *
    * @return bool true, if the remove happened, false otherwise
    */
-  public function remove($internalUri, $hostName = '', $vary = '', $contextualPrefix = '**',$unique = '')
+  public function remove($internalUri, $hostName = '', $vary = '', $contextualPrefix = '**')
   {
     if (sfConfig::get('sf_logging_enabled'))
     {
       $this->dispatcher->notify(new sfEvent($this, 'application.log', array(sprintf('Remove cache for "%s"', $internalUri))));
     }
 
-    $cacheKey = $this->generateCacheKey($internalUri, $hostName, $vary, $contextualPrefix,$unique);
+    $cacheKey = $this->generateCacheKey($internalUri, $hostName, $vary, $contextualPrefix);
 
     if(strpos($cacheKey, '*'))
     {
