@@ -365,6 +365,7 @@ class sfWebResponse extends sfResponse
     // cookies
     foreach ($this->cookies as $cookie)
     {
+      sfContext::getInstance()->getLogger()->err(var_export($cookie,true));
       setrawcookie($cookie['name'], $cookie['value'], $cookie['expire'], $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httpOnly']);
 
       if ($this->options['logging'])
