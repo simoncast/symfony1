@@ -110,7 +110,13 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
     $errorSchema = new sfValidatorErrorSchema($this);
 
     // check that post_max_size has not been reached
-    if (isset($_SERVER['CONTENT_LENGTH']) && (int) $_SERVER['CONTENT_LENGTH'] > $this->getBytes(ini_get('post_max_size')))
+    
+    $bytes = $this->getBytes(ini_get('post_max_size'));
+    if(empty($bytes))
+    {
+      $bytes = $this->getBytes(ini_get('hhvm.server.max_post_size'));  
+    }
+    if (isset($_SERVER['CONTENT_LENGTH']) && (int) $_SERVER['CONTENT_LENGTH'] > $bytes)
     {
       $errorSchema->addError(new sfValidatorError($this, 'post_max_size'));
 
