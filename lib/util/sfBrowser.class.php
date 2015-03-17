@@ -52,10 +52,6 @@ class sfBrowser extends sfBrowserBase
       $this->context->getUser()->shutdown();
       $this->context->getStorage()->shutdown();
     }
-    TaskRunner::getInstance()->newES();
-    $instance = TaskRunner::getInstance();
-    unset($instance);
-    //TaskRunner::getInstance()->updateES();
 
   }
 
