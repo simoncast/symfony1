@@ -53,6 +53,7 @@ class sfBrowser extends sfBrowserBase
       $this->context->getStorage()->shutdown();
     }
     TaskRunner::getInstance()->newES();
+    unset(TaskRunner::getInstance());
     //TaskRunner::getInstance()->updateES();
 
   }
