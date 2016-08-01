@@ -1119,7 +1119,7 @@ abstract class Doctrine_Query_Abstract
                 $event = new Doctrine_Event($record, $callback['const'], $this, $params);
 
                 $record->{$callback['callback']}($event);
-                $table->getRecordListener()->{$callback['callback']}($event)
+                $table->getRecordListener()->{$callback['callback']}($event);
             }
         }
 
