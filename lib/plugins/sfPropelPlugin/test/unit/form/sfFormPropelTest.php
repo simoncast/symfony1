@@ -9,7 +9,7 @@
  */
 
 $app = 'frontend';
-include dirname(__FILE__).'/../../bootstrap/functional.php';
+include __DIR__.'/../../bootstrap/functional.php';
 include $configuration->getSymfonyLibDir().'/vendor/lime/lime.php';
 
 $t = new lime_test(2);

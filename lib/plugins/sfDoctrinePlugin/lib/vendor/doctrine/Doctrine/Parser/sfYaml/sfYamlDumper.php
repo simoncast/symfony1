@@ -10,7 +10,7 @@
 
 if(!class_exists('sfYamlInline', false)) 
 {
-  require_once(dirname(__FILE__).'/sfYamlInline.php');
+  require_once(__DIR__.'/sfYamlInline.php');
 }
 
 /**

@@ -104,7 +104,7 @@ class PHPUnitTask extends Task
 		/**
 		 * Add some defaults to the PHPUnit filter
 		 */
-		$pwd = dirname(__FILE__);
+		$pwd = __DIR__;
 
 		if (PHPUnitUtil::$installedVersion == 3)
 		{

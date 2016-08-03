@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/crudBrowser.class.php');
+require_once(__DIR__.'/crudBrowser.class.php');
 
 class RestBrowser extends CrudBrowser
 {
@@ -17,7 +17,7 @@ class RestBrowser extends CrudBrowser
 
   public function setup($options)
   {
-    $this->projectDir = dirname(__FILE__).'/../fixtures';
+    $this->projectDir = __DIR__.'/../fixtures';
     $this->cleanup();
 
     chdir($this->projectDir);

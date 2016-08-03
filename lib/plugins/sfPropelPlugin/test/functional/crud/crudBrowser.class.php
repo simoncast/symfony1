@@ -18,7 +18,7 @@ class CrudBrowser extends sfTestBrowser
 
   public function setup($options)
   {
-    $this->projectDir = dirname(__FILE__).'/../fixtures';
+    $this->projectDir = __DIR__.'/../fixtures';
     $this->cleanup();
 
     chdir($this->projectDir);

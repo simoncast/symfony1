@@ -10,7 +10,7 @@
 
 $app = 'frontend';
 $fixtures = 'fixtures/fixtures.yml';
-if (!include(dirname(__FILE__).'/../bootstrap/functional.php'))
+if (!include(__DIR__.'/../bootstrap/functional.php'))
 {
   return;
 }
@@ -18,7 +18,7 @@ if (!include(dirname(__FILE__).'/../bootstrap/functional.php'))
 $b = new sfTestBrowser();
 
 // file upload
-$fileToUpload = dirname(__FILE__).'/fixtures/config/databases.yml';
+$fileToUpload = __DIR__.'/fixtures/config/databases.yml';
 $uploadedFile = sfConfig::get('sf_cache_dir').'/uploaded.yml';
 $name = 'test';
 $b->

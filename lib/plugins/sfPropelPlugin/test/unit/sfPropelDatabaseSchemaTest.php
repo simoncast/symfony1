@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/../bootstrap/unit.php');
+require_once(__DIR__.'/../bootstrap/unit.php');
 
 class my_lime_test extends lime_test
 {
@@ -41,44 +41,44 @@ class my_lime_test extends lime_test
   }
 }
 
-require_once(dirname(__FILE__).'/../../../../../test/bootstrap/unit.php');
-require_once(dirname(__FILE__).'/../../lib/addon/sfPropelDatabaseSchema.class.php');
-require_once(dirname(__FILE__).'/../../../../util/sfInflector.class.php');
-require_once(dirname(__FILE__).'/../../../../util/sfToolkit.class.php');
-require_once(dirname(__FILE__).'/../../../../yaml/sfYaml.php');
+require_once(__DIR__.'/../../../../../test/bootstrap/unit.php');
+require_once(__DIR__.'/../../lib/addon/sfPropelDatabaseSchema.class.php');
+require_once(__DIR__.'/../../../../util/sfInflector.class.php');
+require_once(__DIR__.'/../../../../util/sfToolkit.class.php');
+require_once(__DIR__.'/../../../../yaml/sfYaml.php');
 
 $t = new my_lime_test(401);
 
 $t->diag('Classical YAML to XML conversion');
 $p = new sfPropelDatabaseSchema();
-$p->loadYAML(dirname(__FILE__).'/fixtures/schema.yml');
-$target = file_get_contents(dirname(__FILE__).'/fixtures/schema.xml');
+$p->loadYAML(__DIR__.'/fixtures/schema.yml');
+$target = file_get_contents(__DIR__.'/fixtures/schema.xml');
 $t->is_line_by_line($p->asXML(), $target);
 
 $t->diag('New YAML to XML conversion');
 $p = new sfPropelDatabaseSchema();
-$p->loadYAML(dirname(__FILE__).'/fixtures/new_schema.yml');
-$target = file_get_contents(dirname(__FILE__).'/fixtures/schema.xml');
+$p->loadYAML(__DIR__.'/fixtures/new_schema.yml');
+$target = file_get_contents(__DIR__.'/fixtures/schema.xml');
 $t->is_line_by_line($p->asXML(), $target);
 
 $t->diag('New YAML to Old YAML conversion');
-$old_yml_target = sfYaml::load(dirname(__FILE__).'/fixtures/schema.yml');
+$old_yml_target = sfYaml::load(__DIR__.'/fixtures/schema.yml');
 $p = new sfPropelDatabaseSchema();
-$new_yml_transformed = $p->convertNewToOldYaml(sfYaml::load(dirname(__FILE__).'/fixtures/new_schema.yml'));
+$new_yml_transformed = $p->convertNewToOldYaml(sfYaml::load(__DIR__.'/fixtures/new_schema.yml'));
 $t->is_array_explicit($new_yml_transformed, $old_yml_target);
 
 $t->diag('Old YAML to New YAML conversion');
-$new_yml_target = sfYaml::load(dirname(__FILE__).'/fixtures/new_schema.yml');
+$new_yml_target = sfYaml::load(__DIR__.'/fixtures/new_schema.yml');
 $p = new sfPropelDatabaseSchema();
-$old_yml_transformed = $p->convertOldToNewYaml(sfYaml::load(dirname(__FILE__).'/fixtures/schema.yml'));
+$old_yml_transformed = $p->convertOldToNewYaml(sfYaml::load(__DIR__.'/fixtures/schema.yml'));
 $t->is_array_explicit($old_yml_transformed, $new_yml_target);
 
 
 $t->todo('XML and classical YAML internal representation');
 $p1 = new sfPropelDatabaseSchema();
-$p1->loadXML(dirname(__FILE__).'/fixtures/schema.xml');
+$p1->loadXML(__DIR__.'/fixtures/schema.xml');
 $p2 = new sfPropelDatabaseSchema();
-$p2->loadYAML(dirname(__FILE__).'/fixtures/schema.yml');
+$p2->loadYAML(__DIR__.'/fixtures/schema.yml');
 //$t->is_array_explicit($p1->asArray(), $p2->asArray());
 
 $t->todo('XML and classical YAML compared as XML');

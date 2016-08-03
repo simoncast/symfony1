@@ -1,6 +1,6 @@
 autoload:
   sfPropelPlugin_lib:
     name:           propel addon
-    path:           <?php echo realpath(dirname(__FILE__).'/../lib')."\n" ?>
+    path:           <?php echo realpath(__DIR__.'/../lib')."\n" ?>
     recursive:      true
     exclude:        [vendor]
