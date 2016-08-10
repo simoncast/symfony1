@@ -299,52 +299,6 @@ class Doctrine_Record_Listener_Chain extends Doctrine_Access implements Doctrine
             }
         }
     }
-    
-    public function postDqlUpdate(Doctrine_Event $event)
-    {
-        $disabled = $this->getOption('disabled');
-	
-	    if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlUpdate', $disabled))) {
-            foreach ($this->_listeners as $listener) {
-                $disabled = $listener->getOption('disabled');
-
-                if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlUpdate', $disabled))) {
-                    $listener->postDqlUpdate($event);
-                }
-            }
-        }
-    }    
-
-    public function postDqlSelect(Doctrine_Event $event)
-    {
-        $disabled = $this->getOption('disabled');
-	
-	    if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlSelect', $disabled))) {
-            foreach ($this->_listeners as $listener) {
-                $disabled = $listener->getOption('disabled');
-
-                if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlSelect', $disabled))) {
-                    $listener->postDqlSelect($event);
-                }
-            }
-        }
-    }    
-    
-    public function postDqlDelete(Doctrine_Event $event)
-    {
-     
-        $disabled = $this->getOption('disabled');
-	
-	    if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlDelete', $disabled))) {
-            foreach ($this->_listeners as $listener) {
-                $disabled = $listener->getOption('disabled');
-
-                if ($disabled !== true && ! (is_array($disabled) && in_array('postDqlDelete', $disabled))) {
-                    $listener->postDqlDelete($event);
-                }
-            }
-        }
-    }    
 
     public function preUpdate(Doctrine_Event $event)
     {

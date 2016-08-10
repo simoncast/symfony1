@@ -104,15 +104,6 @@ class Doctrine_Record_Listener implements Doctrine_Record_Listener_Interface
     public function preDqlDelete(Doctrine_Event $event)
     { }
 
-    public function postDqlUpdate(Doctrine_Event $event)
-    { }    
-
-    public function postDqlSelect(Doctrine_Event $event)
-    { }
-
-    public function postDqlDelete(Doctrine_Event $event)
-    { }
-    
     public function preDelete(Doctrine_Event $event)
     { }
 

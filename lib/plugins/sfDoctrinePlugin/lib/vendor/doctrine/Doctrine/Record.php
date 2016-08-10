@@ -572,27 +572,6 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
     public function preDqlSelect($event)
     { }
 
-   /**
-    * Empty template method to provide Record classes with the ability to alter DQL delete
-    * queries at runtime
-    */
-    public function postDqlDelete($event)
-    { }
-
-    /**
-    * Empty template method to provide Record classes with the ability to alter DQL delete
-    * queries at runtime
-    */
-    public function postDqlSelect($event)
-    { }
-
-    /**
-    * Empty template method to provide Record classes with the ability to alter DQL delete
-    * queries at runtime
-    */
-    public function postDqlUpdate($event)
-    { }
-     
     /**
      * Empty template method to provide Record classes with the ability to alter DQL update
      * queries at runtime
@@ -1847,7 +1826,7 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
             switch ($type) {
                 case 'array':
                 case 'object':
-                    $a[$field] = base64_encode(serialize($this->_data[$field]));
+                    $a[$field] = serialize($this->_data[$field]);
                     break;
                 case 'gzip':
                     $a[$field] = gzcompress($this->_data[$field],5);
@@ -2027,6 +2006,8 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
         if ($refresh) {
             $this->refresh();
         }
+
+        return $this;
     }
 
     /**

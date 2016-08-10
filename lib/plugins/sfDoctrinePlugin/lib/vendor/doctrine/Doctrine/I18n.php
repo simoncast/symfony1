@@ -44,13 +44,10 @@ class Doctrine_I18n extends Doctrine_Record_Generator
                             'type'          => 'string',
                             'length'        => 2,
                             'options'       => array(),
-                            'columns'       => array(),
                             'cascadeDelete' => true,
                             'appLevelDelete'=> false
                             );
 
-    protected $columns = array();
-    
     /**
      * __construct
      *
@@ -68,35 +65,46 @@ class Doctrine_I18n extends Doctrine_Record_Generator
         $this->buildLocalRelation();
     }
 
-    public function setTableDefinition()
-    {
-      	if (empty($this->_options['columns'])) {
-      	    throw new Doctrine_I18n_Exception('Columns not set.');
-      	}
-        
-        $options = array('className' => $this->_options['className']);
-        $this->hasColumns($this->_options['columns']);
-
-        $defaultOptions = array(
-            'primary' => true,
-            'fixed'  => true
-        );
-        
-        $options = array_merge($defaultOptions, $this->_options['options']);
-        $this->hasColumn($this->_options['i18nField'], $this->_options['type'], $this->_options['length'], $options);
-        $this->bindQueryParts(array('indexBy' => $this->_options['i18nField']));
-    }
-    
     /**
      * buildDefinition
      *
      * @param object $Doctrine_Table
      * @return void
      */
-    public function setUp()
-    {  
-        parent::setUp();
-        
+    public function setTableDefinition()
+    {
+      	if (empty($this->_options['fields'])) {
+      	    throw new Doctrine_I18n_Exception('Fields not set.');
+      	}
+
+        $options = array('className' => $this->_options['className']);
+
+        $cols = $this->_options['table']->getColumns();
+
+        $columns = array();
+        foreach ($cols as $column => $definition) {
+            $fieldName = $this->_options['table']->getFieldName($column);
+            if (in_array($fieldName, $this->_options['fields'])) {
+                if ($column != $fieldName) {
+                    $column .= ' as ' . $fieldName;
+                }
+                $columns[$column] = $definition;
+                $this->_options['table']->removeColumn($fieldName);
+            }
+        }
+
+        $this->hasColumns($columns);
+
+        $defaultOptions = array(
+            'fixed' => true,
+            'primary' => true
+        );
+        $options = array_merge($defaultOptions, $this->_options['options']);
+
+        $this->hasColumn($this->_options['i18nField'], $this->_options['type'], $this->_options['length'], $options);
+
+        $this->bindQueryParts(array('indexBy' => $this->_options['i18nField']));
+ 
         // Rewrite any relations to our original table
         $originalName = $this->_options['table']->getClassnameToReturn();
         $relations = $this->_options['table']->getRelationParser()->getPendingRelations();

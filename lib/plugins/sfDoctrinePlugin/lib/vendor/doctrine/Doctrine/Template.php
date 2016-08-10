@@ -49,11 +49,6 @@ abstract class Doctrine_Template extends Doctrine_Record_Abstract
     protected $_options = array();
 
     /**
-     * @var array $_original_options Template original options passed to __construct
-     */
-    protected $_original_options = array();
-    
-    /**
      * __construct
      *
      * @param string $array 
@@ -61,7 +56,6 @@ abstract class Doctrine_Template extends Doctrine_Record_Abstract
      */
     public function __construct(array $options = array())
     {
-        $this->_original_options = $options;
         $this->_options = Doctrine_Lib::arrayDeepMerge($this->_options, $options);
     }
 
@@ -150,17 +144,6 @@ abstract class Doctrine_Template extends Doctrine_Record_Abstract
         return $this->_options;
     }
 
-    /**
-     * getOptions
-     * returns all options of this template and the associated values
-     *
-     * @return array    all options and their values
-     */
-    public function getOriginalOptions()
-    {
-        return $this->_original_options;
-    }
-    
     /**
      * getOption
      * returns the value of given option

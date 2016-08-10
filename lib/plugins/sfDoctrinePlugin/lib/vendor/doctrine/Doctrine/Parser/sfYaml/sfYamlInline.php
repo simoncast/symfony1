@@ -8,10 +8,7 @@
  * file that was distributed with this source code.
  */
 
-if(!class_exists('sfYaml', false))
-{
-  require_once __DIR__.'/sfYaml.php';
-}
+require_once dirname(__FILE__).'/sfYaml.php';
 
 /**
  * sfYamlInline implements a YAML parser/dumper for the YAML inline syntax.

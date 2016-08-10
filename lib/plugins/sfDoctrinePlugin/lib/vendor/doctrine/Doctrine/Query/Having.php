@@ -38,7 +38,7 @@ class Doctrine_Query_Having extends Doctrine_Query_Condition
      * @param string $func
      * @return mixed
      */
-    protected function parseAggregateFunction($func)
+    private function parseAggregateFunction($func)
     {
         $pos = strpos($func, '(');
 
