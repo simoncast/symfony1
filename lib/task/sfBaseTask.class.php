@@ -202,7 +202,6 @@ abstract class sfBaseTask extends sfCommandApplicationTask
   }
 
   /**
->>>>>>> fos_1.5.13
    * Creates a configuration object.
    *
    * @param string  $application The application name
@@ -553,5 +552,4 @@ abstract class sfBaseTask extends sfCommandApplicationTask
 
     return $string;
   }
->>>>>>> fos_1.5.13
 }

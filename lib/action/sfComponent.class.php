@@ -140,7 +140,6 @@ abstract class sfComponent
   }
 
   /**
->>>>>>> fos_1.5.13
    * Retrieves the current logger instance.
    *
    * @return sfLogger The current sfLogger instance

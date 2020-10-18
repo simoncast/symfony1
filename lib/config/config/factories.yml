@@ -98,15 +98,12 @@ default:
           param:
             level: debug
             file: %SF_LOG_DIR%/%SF_APP%_%SF_ENVIRONMENT%.log
-<<<<<<< HEAD
-=======
         sf_psr_logger:
           class: sfPsrLoggerAdapter
           param:
             logger_service_id: logger.psr
             auto_connect: true
             condition: %SF_PSR_LOGGER%
->>>>>>> fos_1.5.13
 
   mailer:
     class: sfMailer
@@ -122,9 +119,6 @@ default:
           encryption: ~
           username:   ~
           password:   ~
-<<<<<<< HEAD
-=======
 
   service_container:
     class: sfServiceContainer
->>>>>>> fos_1.5.13

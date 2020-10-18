@@ -29,12 +29,6 @@ $b->
 
 $t = $b->test();
 
-<<<<<<< HEAD
-$autoload = sfAutoload::getInstance();
-$t->ok(@file_get_contents($autoload->getClassPath('sfpropel'), FILE_USE_INCLUDE_PATH), '"sfAutoload" is case insensitive');
-
-=======
->>>>>>> fos_1.5.13
 $t->ok(class_exists('BaseExtendMe'), 'plugin lib directory added to autoload');
 $r = new ReflectionClass('ExtendMe');
 $t->like(str_replace(DIRECTORY_SEPARATOR, '/', $r->getFilename()), '~fixtures/lib/ExtendMe~', 'plugin class can be replaced by project');

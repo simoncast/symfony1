@@ -14,11 +14,7 @@
  * @package    symfony
  * @subpackage debug
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfWebDebugPanel.class.php 27284 2010-01-28 18:34:57Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 abstract class sfWebDebugPanel
 {
@@ -68,11 +64,7 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns the current status.
-<<<<<<< HEAD
-   * 
-=======
    *
->>>>>>> fos_1.5.13
    * @return integer A {@link sfLogger} priority constant
    */
   public function getStatus()
@@ -82,11 +74,7 @@ abstract class sfWebDebugPanel
 
   /**
    * Sets the current panel's status.
-<<<<<<< HEAD
-   * 
-=======
    *
->>>>>>> fos_1.5.13
    * @param integer $status A {@link sfLogger} priority constant
    */
   public function setStatus($status)
@@ -96,17 +84,10 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns a toggler element.
-<<<<<<< HEAD
-   * 
-   * @param  string $element The value of an element's DOM id attribute
-   * @param  string $title   A title attribute
-   * 
-=======
    *
    * @param  string $element The value of an element's DOM id attribute
    * @param  string $title   A title attribute
    *
->>>>>>> fos_1.5.13
    * @return string
    */
   public function getToggler($element, $title = 'Toggle details')
@@ -116,15 +97,9 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns a toggleable presentation of a debug stack.
-<<<<<<< HEAD
-   * 
-   * @param  array $debugStack
-   * 
-=======
    *
    * @param  array $debugStack
    *
->>>>>>> fos_1.5.13
    * @return string
    */
   public function getToggleableDebugStack($debugStack)
@@ -169,19 +144,11 @@ abstract class sfWebDebugPanel
 
   /**
    * Formats a file link.
-<<<<<<< HEAD
-   * 
-   * @param  string  $file A file path or class name
-   * @param  integer $line
-   * @param  string  $text Text to use for the link
-   * 
-=======
    *
    * @param  string  $file A file path or class name
    * @param  integer $line
    * @param  string  $text Text to use for the link
    *
->>>>>>> fos_1.5.13
    * @return string
    */
   public function formatFileLink($file, $line = null, $text = null)
@@ -226,11 +193,7 @@ abstract class sfWebDebugPanel
    * Format a SQL string with some colors on SQL keywords to make it more readable.
    *
    * @param  string $sql    SQL string to format
-<<<<<<< HEAD
-   * 
-=======
    *
->>>>>>> fos_1.5.13
    * @return string $newSql The new formatted SQL string
    */
   public function formatSql($sql)

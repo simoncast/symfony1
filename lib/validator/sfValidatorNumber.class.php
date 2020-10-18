@@ -14,11 +14,7 @@
  * @package    symfony
  * @subpackage validator
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfValidatorNumber.class.php 22018 2009-09-14 16:56:28Z fabien $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class sfValidatorNumber extends sfValidatorBase
 {
@@ -61,11 +57,7 @@ class sfValidatorNumber extends sfValidatorBase
       throw new sfValidatorError($this, 'invalid', array('value' => $value));
     }
 
-<<<<<<< HEAD
-    $clean = floatval($value);
-=======
     $clean = (float) $value;
->>>>>>> fos_1.5.13
 
     if ($this->hasOption('max') && $clean > $this->getOption('max'))
     {

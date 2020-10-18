@@ -14,11 +14,7 @@
  * @package    symfony
  * @subpackage action
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class defaultActions extends sfActions
 {

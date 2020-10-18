@@ -59,5 +59,4 @@ abstract class sfTestBaseTask extends sfBaseTask
       return false;
     }
   }
->>>>>>> fos_1.5.13
 }

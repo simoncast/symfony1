@@ -335,5 +335,4 @@ class sfValidatorFile extends sfValidatorBase
 
     return (integer) $value;
   }
->>>>>>> fos_1.5.13
 }

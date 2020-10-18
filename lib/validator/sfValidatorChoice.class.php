@@ -153,7 +153,6 @@ class sfValidatorChoice extends sfValidatorBase
   }
 
   /**
->>>>>>> fos_1.5.13
    * Checks if a value is part of given choices (see bug #4212)
    *
    * @param  mixed $value   The value to check

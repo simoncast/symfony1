@@ -136,11 +136,7 @@ $t->is($request->splitHttpAcceptHeader('a; q=0, b'), array('b'), '->splitHttpAcc
 // ->getRequestFormat() ->setRequestFormat()
 $t->diag('->getRequestFormat() ->setRequestFormat()');
 
-<<<<<<< HEAD
-$t->ok(is_null($request->getRequestFormat()), '->getRequestFormat() returns null if the format is not defined in the request');
-=======
 $t->ok(null === $request->getRequestFormat(), '->getRequestFormat() returns null if the format is not defined in the request');
->>>>>>> fos_1.5.13
 $request->setParameter('sf_format', 'js');
 $t->is($request->getRequestFormat(), 'js', '->getRequestFormat() returns the request format');
 
@@ -150,12 +146,9 @@ $t->is($request->getRequestFormat(), 'css', '->setRequestFormat() sets the reque
 // ->getFormat() ->setFormat()
 $t->diag('->getFormat() ->setFormat()');
 
-<<<<<<< HEAD
-=======
 $customRequest = new myRequest($dispatcher, array(), array(), array('formats' => array('custom' => 'application/custom')));
 $t->is($customRequest->getFormat('application/custom'), 'custom', '->getFormat() returns the format for the given mime type if when is set as initialisation option');
 
->>>>>>> fos_1.5.13
 $request->setFormat('js', 'application/x-javascript');
 $t->is($request->getFormat('application/x-javascript'), 'js', '->getFormat() returns the format for the given mime type');
 $request->setFormat('js', array('application/x-javascript', 'text/js'));
@@ -193,8 +186,6 @@ $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 $t->is($request->isSecure(), true, '->isSecure() checks the "HTTP_X_FORWARDED_PROTO" environment variable');
 $request->resetPathInfoArray();
 
-<<<<<<< HEAD
-=======
 $request->setOption('trust_proxy', false);
 
 $_SERVER['HTTP_SSL_HTTPS'] = '1';
@@ -207,7 +198,6 @@ $request->resetPathInfoArray();
 
 $request->setOption('trust_proxy', true);
 
->>>>>>> fos_1.5.13
 // ->getUriPrefix()
 $t->diag('->getUriPrefix()');
 
@@ -282,11 +272,6 @@ $t->is($request->getForwardedFor(), null, '->getForwardedFor() returns null if t
 $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.0.0.1, 10.0.0.2';
 $t->is_deeply($request->getForwardedFor(), array('10.0.0.1', '10.0.0.2'), '->getForwardedFor() returns the value from HTTP_X_FORWARDED_FOR');
 
-<<<<<<< HEAD
-// ->getMethod()
-$t->diag('->getMethod()');
-
-=======
 // ->getClientIp()
 $t->diag('->getClientIp()');
 
@@ -367,7 +352,6 @@ $_SERVER['REQUEST_METHOD'] = 'HEAD';
 $request = new myRequest($dispatcher);
 $t->is($request->getMethod(), 'HEAD', '->getMethod() returns DELETE if the method is HEAD');
 
->>>>>>> fos_1.5.13
 $_SERVER['REQUEST_METHOD'] = 'POST';
 $_POST['sf_method'] = 'PUT';
 $request = new myRequest($dispatcher);
@@ -383,8 +367,6 @@ unset($_POST['sf_method']);
 $request = new myRequest($dispatcher);
 $t->is($request->getMethod(), 'POST', '->getMethod() returns the "sf_method" parameter value if it exists and if the method is POST');
 
-<<<<<<< HEAD
-=======
 $_SERVER['REQUEST_METHOD'] = 'POST';
 $_GET['sf_method'] = 'PUT';
 $request = new myRequest($dispatcher);
@@ -415,7 +397,6 @@ $_COOKIE['test'] = 'value';
 $request = new myRequest($dispatcher);
 $t->is($request->getCookie('test'), 'value', '->getCookie() returns value of cookie');
 
->>>>>>> fos_1.5.13
 // ->getScriptName()
 $t->diag('->getScriptName()');
 
@@ -466,10 +447,6 @@ $request->resetPathInfoArray();
 $request = new myRequest($dispatcher);
 $t->is($request->getPathInfo(), '/', '->getPathInfo() returns the url path value if it not exists use default /');
 
-<<<<<<< HEAD
-// ->addRequestParameters() ->getRequestParameters() ->fixParameters()
-$t->diag('getPathInfo');
-=======
 // -setRelativeUrlRoot() ->getRelativeUrlRoot()
 $t->diag('-setRelativeUrlRoot() ->getRelativeUrlRoot()');
 $t->is($request->getRelativeUrlRoot(), '', '->getRelativeUrlRoot() return computed relative url root');
@@ -478,7 +455,6 @@ $t->is($request->getRelativeUrlRoot(), 'toto', '->getRelativeUrlRoot() return pr
 
 // ->addRequestParameters() ->getRequestParameters() ->fixParameters()
 $t->diag('->addRequestParameters() ->getRequestParameters() ->fixParameters()');
->>>>>>> fos_1.5.13
 
 $request = new myRequest($dispatcher);
 $t->is($request->getRequestParameters(), array(), '->getRequestParameters() returns the request parameters default array');
@@ -493,13 +469,10 @@ $request->addRequestParameters(array('_sf_ignore_cache' => 1, 'test2' => 'test2'
 $t->is($request->getRequestParameters(), array('test' => 'test', 'test2' => 'test2', '_sf_ignore_cache' => 1), '->getRequestParameters() returns the request parameters check fixParameters call for special _sf_ params');
 $t->is($request->getAttribute('sf_ignore_cache'), 1, '->getAttribute() check special param is set as attribute');
 
-<<<<<<< HEAD
-=======
 // ->getUrlParameter
 $t->diag('->getUrlParameter()');
 $t->is($request->getUrlParameter('test'), 'test', '->getUrlParameter() returns URL parameter by name');
 
->>>>>>> fos_1.5.13
 // ->checkCSRFProtection()
 $t->diag('->checkCSRFProtection()');
 
@@ -547,8 +520,6 @@ $_SERVER['CONTENT_TYPE'] = 'text/html; charset=UTF-8';
 $t->is($request->getContentType(), 'text/html', '->getContentType() strips the charset information by default');
 $t->is($request->getContentType(false), 'text/html; charset=UTF-8', '->getContentType() does not strip the charset information by defaultif you pass false as the first argument');
 
-<<<<<<< HEAD
-=======
 // ->getReferer()
 $t->diag('->getReferer()');
 
@@ -556,7 +527,6 @@ $request = new myRequest($dispatcher);
 $_SERVER['HTTP_REFERER'] = 'http://domain';
 $t->is($request->getReferer(), 'http://domain', '->getContentType() returns the content type');
 
->>>>>>> fos_1.5.13
 // ->getHost()
 $t->diag('->getHost()');
 
@@ -564,8 +534,6 @@ $request = new myRequest($dispatcher);
 $_SERVER['HTTP_X_FORWARDED_HOST'] = 'example1.com, example2.com, example3.com';
 $t->is($request->getHost(), 'example3.com', '->getHost() returns the last forwarded host');
 unset($_SERVER['HTTP_X_FORWARDED_HOST']);
-<<<<<<< HEAD
-=======
 
 $_SERVER['HTTP_HOST'] = 'symfony-project.org';
 $t->is($request->getHost(), 'symfony-project.org', '->getHost() returns the host');
@@ -610,4 +578,3 @@ $taintedFiles = array(
 );
 $t->is_deeply($request->getFiles(), $taintedFiles, '->getFiles() return clean array extracted from $_FILES');
 
->>>>>>> fos_1.5.13

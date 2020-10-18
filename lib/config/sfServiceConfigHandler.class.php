@@ -57,10 +57,7 @@ class sfServiceConfigHandler extends sfYamlConfigHandler
 
   /**
    * @see sfConfigHandler
-<<<<<<< HEAD
-=======
    * @inheritdoc
->>>>>>> fos_1.5.13
    */
   static public function getConfiguration(array $configFiles)
   {

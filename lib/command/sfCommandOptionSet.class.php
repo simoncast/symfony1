@@ -61,11 +61,8 @@ class sfCommandOptionSet
    * Add a sfCommandOption objects.
    *
    * @param sfCommandOption $option A sfCommandOption object
-<<<<<<< HEAD
-=======
    *
    * @throws sfCommandException
->>>>>>> fos_1.5.13
    */
   public function addOption(sfCommandOption $option)
   {
@@ -91,11 +88,8 @@ class sfCommandOptionSet
    * @param string $name The option name
    *
    * @return sfCommandOption A sfCommandOption object
-<<<<<<< HEAD
-=======
    *
    * @throws sfCommandException
->>>>>>> fos_1.5.13
    */
   public function getOption($name)
   {
@@ -122,11 +116,7 @@ class sfCommandOptionSet
   /**
    * Gets the array of sfCommandOption objects.
    *
-<<<<<<< HEAD
-   * @return array An array of sfCommandOption objects
-=======
    * @return sfCommandOption[] An array of sfCommandOption objects
->>>>>>> fos_1.5.13
    */
   public function getOptions()
   {
@@ -148,11 +138,8 @@ class sfCommandOptionSet
   /**
    * Gets an option by shortcut.
    *
-<<<<<<< HEAD
-=======
    * @param string $shortcut
    *
->>>>>>> fos_1.5.13
    * @return sfCommandOption A sfCommandOption object
    */
   public function getOptionForShortcut($shortcut)
@@ -182,11 +169,8 @@ class sfCommandOptionSet
    * @param string $shortcut The shortcut
    *
    * @return string The option name
-<<<<<<< HEAD
-=======
    *
    * @throws sfCommandException
->>>>>>> fos_1.5.13
    */
   protected function shortcutToName($shortcut)
   {

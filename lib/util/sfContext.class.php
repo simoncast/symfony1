@@ -492,7 +492,6 @@ class sfContext implements ArrayAccess
   }
 
   /**
->>>>>>> fos_1.5.13
    * Returns the configuration cache.
    *
    * @return sfConfigCache A sfConfigCache instance

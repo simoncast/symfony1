@@ -16,11 +16,7 @@
  * @package    symfony
  * @subpackage routing
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfRequestRoute.class.php 20784 2009-08-04 20:53:57Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class sfRequestRoute extends sfRoute
 {
@@ -51,11 +47,7 @@ class sfRequestRoute extends sfRoute
    * @param  string  $url     The URL
    * @param  array   $context The context
    *
-<<<<<<< HEAD
-   * @return array   An array of parameters
-=======
    * @return array|bool   An array of parameters or false if not matching
->>>>>>> fos_1.5.13
    */
   public function matchesUrl($url, $context = array())
   {

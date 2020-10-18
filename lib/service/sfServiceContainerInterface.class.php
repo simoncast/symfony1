@@ -100,5 +100,4 @@ interface sfServiceContainerInterface
    * @return Boolean true if the service is defined, false otherwise
    */
   public function hasService($id);
->>>>>>> fos_1.5.13
 }

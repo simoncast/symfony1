@@ -72,30 +72,18 @@ EOF;
     {
       $this->logBlock(array_merge(
         array('Permissions on the following file(s) could not be fixed:', ''),
-<<<<<<< HEAD
-        array_map(create_function('$f', 'return \' - \'.sfDebug::shortenFilePath($f);'), $this->failed)
-=======
         array_map(function($f) { return ' - '.sfDebug::shortenFilePath($f); }, $this->failed)
->>>>>>> fos_1.5.13
       ), 'ERROR_LARGE');
     }
   }
 
   /**
    * Chmod and capture any failures.
-<<<<<<< HEAD
-   * 
-   * @param string  $file
-   * @param integer $mode
-   * @param integer $umask
-   * 
-=======
    *
    * @param string  $file
    * @param integer $mode
    * @param integer $umask
    *
->>>>>>> fos_1.5.13
    * @see sfFilesystem
    */
   protected function chmod($file, $mode, $umask = 0000)
@@ -121,11 +109,7 @@ EOF;
 
   /**
    * Captures those chmod commands that fail.
-<<<<<<< HEAD
-   * 
-=======
    *
->>>>>>> fos_1.5.13
    * @see http://www.php.net/set_error_handler
    */
   public function handleError($no, $string, $file, $line, $context)

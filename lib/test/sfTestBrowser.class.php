@@ -19,11 +19,7 @@ require_once(__DIR__.'/../vendor/lime/lime.php');
  * @package    symfony
  * @subpackage test
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfTestBrowser.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class sfTestBrowser extends sfTestFunctional
 {

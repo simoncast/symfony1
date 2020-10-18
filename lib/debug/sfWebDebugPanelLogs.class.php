@@ -14,11 +14,7 @@
  * @package    symfony
  * @subpackage debug
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfWebDebugPanelLogs.class.php 22182 2009-09-19 18:51:53Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class sfWebDebugPanelLogs extends sfWebDebugPanel
 {

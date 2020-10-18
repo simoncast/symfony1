@@ -65,17 +65,11 @@ class sfFormatter
   /**
    * Formats a message within a section.
    *
-<<<<<<< HEAD
-   * @param string  $section  The section name
-   * @param string  $text     The text message
-   * @param integer $size     The maximum size allowed for a line
-=======
    * @param string  $section The section name
    * @param string  $text    The text message
    * @param integer $size    The maximum size allowed for a line
    *
    * @return string
->>>>>>> fos_1.5.13
    */
   public function formatSection($section, $text, $size = null)
   {

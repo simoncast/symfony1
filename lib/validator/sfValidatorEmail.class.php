@@ -14,11 +14,7 @@
  * @package    symfony
  * @subpackage validator
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
-<<<<<<< HEAD
- * @version    SVN: $Id: sfValidatorEmail.class.php 22149 2009-09-18 14:09:53Z Kris.Wallsmith $
-=======
  * @version    SVN: $Id$
->>>>>>> fos_1.5.13
  */
 class sfValidatorEmail extends sfValidatorRegex
 {
