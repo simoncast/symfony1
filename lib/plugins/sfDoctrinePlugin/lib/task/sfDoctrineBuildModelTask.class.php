@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
 
 /**
  * Create classes for the current model.
@@ -18,7 +18,7 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineBuildModelTask.class.php 30901 2010-09-13 17:41:16Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfDoctrineBuildModelTask extends sfDoctrineBaseTask
 {

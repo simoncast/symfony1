@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
 
 /**
  * Generates a Doctrine module for a route definition.
@@ -16,7 +16,7 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineGenerateModuleForRouteTask.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfDoctrineGenerateModuleForRouteTask extends sfDoctrineBaseTask
 {

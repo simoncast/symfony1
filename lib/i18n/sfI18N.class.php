@@ -14,7 +14,11 @@
  * @package    symfony
  * @subpackage i18n
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfI18N.class.php 29520 2010-05-19 11:47:08Z fabien $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfI18N
 {

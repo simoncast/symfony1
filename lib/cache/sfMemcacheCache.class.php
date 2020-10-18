@@ -1,10 +1,9 @@
-
 <?php
 
 /*
  * This file is part of the symfony package.
  * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -15,12 +14,12 @@
  * @package    symfony
  * @subpackage cache
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfMemcacheCache.class.php 29490 2010-05-17 13:09:00Z fabien $
+ * @version    SVN: $Id$
  */
 class sfMemcacheCache extends sfCache
 {
-  protected
-    $memcache = null;
+  /** @var Memcache */
+  protected $memcache = null;
 
   /**
    * Initializes this sfCache instance.
@@ -38,6 +37,7 @@ class sfMemcacheCache extends sfCache
    * * see sfCache for options available for all drivers
    *
    * @see sfCache
+   * @inheritdoc
    */
   public function initialize($options = array())
   {
@@ -80,32 +80,42 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @return Memcache
    */
   public function getBackend()
   {
     return $this->memcache;
   }
 
- /**
-  * @see sfCache
-  */
+  /**
+   * @see sfCache
+   * @inheritdoc
+   */
   public function get($key, $default = null)
   {
     $value = $this->memcache->get($this->getOption('prefix').$key);
 
-    return false === $value ? $default : $value;
+    return (false === $value && false === $this->getMetadata($key)) ? $default : $value;
   }
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function has($key)
   {
-    return !(false === $this->memcache->get($this->getOption('prefix').$key));
+    if (false === $this->memcache->get($this->getOption('prefix') . $key))
+    {
+      // if there is metadata, $key exists with a false value
+      return !(false === $this->getMetadata($key));
+    }
+
+    return true;
   }
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function set($key, $data, $lifetime = null)
   {
@@ -130,6 +140,7 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function remove($key)
   {
@@ -144,6 +155,7 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function clean($mode = sfCache::ALL)
   {
@@ -155,6 +167,7 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function getLastModified($key)
   {
@@ -168,6 +181,7 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function getTimeout($key)
   {
@@ -181,6 +195,9 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
+   *
+   * @throws sfCacheException
    */
   public function removePattern($pattern)
   {
@@ -201,13 +218,17 @@ class sfMemcacheCache extends sfCache
 
   /**
    * @see sfCache
+   * @inheritdoc
    */
   public function getMany($keys)
   {
     $values = array();
-    foreach ($this->memcache->get(array_map(create_function('$k', 'return "'.$this->getOption('prefix').'".$k;'), $keys)) as $key => $value)
+    $prefix = $this->getOption('prefix');
+    $prefixed_keys = array_map(function($k) use ($prefix) { return $prefix . $k; }, $keys);
+
+    foreach ($this->memcache->get($prefixed_keys) as $key => $value)
     {
-      $values[str_replace($this->getOption('prefix'), '', $key)] = $value;
+      $values[str_replace($prefix, '', $key)] = $value;
     }
 
     return $values;
@@ -233,7 +254,7 @@ class sfMemcacheCache extends sfCache
    */
   protected function setMetadata($key, $lifetime)
   {
-    $this->memcache->set($this->getOption('prefix').'_metadata'.self::SEPARATOR.$key, array('lastModified' => time(), 'timeout' => time() + $lifetime), false, $lifetime);
+    $this->memcache->set($this->getOption('prefix').'_metadata'.self::SEPARATOR.$key, array('lastModified' => time(), 'timeout' => time() + $lifetime), false, time() + $lifetime);
   }
 
   /**
@@ -270,6 +291,8 @@ class sfMemcacheCache extends sfCache
 
   /**
    * Gets cache information.
+   *
+   * @return array
    */
   protected function getCacheInfo()
   {

@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+=======
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+>>>>>>> fos_1.5.13
 
 /**
  * Generate migrations from database
@@ -18,7 +22,11 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfDoctrineGenerateMigrationsDbTask.class.php 23922 2009-11-14 14:58:38Z fabien $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfDoctrineGenerateMigrationsDbTask extends sfDoctrineBaseTask
 {

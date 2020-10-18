@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage command
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfCommandOptionSet.class.php 17865 2009-05-02 09:23:55Z FabianLange $
+ * @version    SVN: $Id$
  */
 class sfCommandOptionSet
 {
@@ -61,6 +61,11 @@ class sfCommandOptionSet
    * Add a sfCommandOption objects.
    *
    * @param sfCommandOption $option A sfCommandOption object
+<<<<<<< HEAD
+=======
+   *
+   * @throws sfCommandException
+>>>>>>> fos_1.5.13
    */
   public function addOption(sfCommandOption $option)
   {
@@ -86,6 +91,11 @@ class sfCommandOptionSet
    * @param string $name The option name
    *
    * @return sfCommandOption A sfCommandOption object
+<<<<<<< HEAD
+=======
+   *
+   * @throws sfCommandException
+>>>>>>> fos_1.5.13
    */
   public function getOption($name)
   {
@@ -112,7 +122,11 @@ class sfCommandOptionSet
   /**
    * Gets the array of sfCommandOption objects.
    *
+<<<<<<< HEAD
    * @return array An array of sfCommandOption objects
+=======
+   * @return sfCommandOption[] An array of sfCommandOption objects
+>>>>>>> fos_1.5.13
    */
   public function getOptions()
   {
@@ -134,6 +148,11 @@ class sfCommandOptionSet
   /**
    * Gets an option by shortcut.
    *
+<<<<<<< HEAD
+=======
+   * @param string $shortcut
+   *
+>>>>>>> fos_1.5.13
    * @return sfCommandOption A sfCommandOption object
    */
   public function getOptionForShortcut($shortcut)
@@ -163,6 +182,11 @@ class sfCommandOptionSet
    * @param string $shortcut The shortcut
    *
    * @return string The option name
+<<<<<<< HEAD
+=======
+   *
+   * @throws sfCommandException
+>>>>>>> fos_1.5.13
    */
   protected function shortcutToName($shortcut)
   {

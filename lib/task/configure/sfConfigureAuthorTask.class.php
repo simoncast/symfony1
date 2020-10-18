@@ -14,7 +14,11 @@
  * @package    symfony
  * @subpackage task
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfConfigureAuthorTask.class.php 6978 2008-01-06 18:53:47Z fabien $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfConfigureAuthorTask extends sfBaseTask
 {

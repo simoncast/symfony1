@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage task
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfProjectPermissionsTask.class.php 23922 2009-11-14 14:58:38Z fabien $
+ * @version    SVN: $Id$
  */
 class sfProjectPermissionsTask extends sfBaseTask
 {
@@ -72,18 +72,30 @@ EOF;
     {
       $this->logBlock(array_merge(
         array('Permissions on the following file(s) could not be fixed:', ''),
+<<<<<<< HEAD
         array_map(create_function('$f', 'return \' - \'.sfDebug::shortenFilePath($f);'), $this->failed)
+=======
+        array_map(function($f) { return ' - '.sfDebug::shortenFilePath($f); }, $this->failed)
+>>>>>>> fos_1.5.13
       ), 'ERROR_LARGE');
     }
   }
 
   /**
    * Chmod and capture any failures.
+<<<<<<< HEAD
    * 
    * @param string  $file
    * @param integer $mode
    * @param integer $umask
    * 
+=======
+   *
+   * @param string  $file
+   * @param integer $mode
+   * @param integer $umask
+   *
+>>>>>>> fos_1.5.13
    * @see sfFilesystem
    */
   protected function chmod($file, $mode, $umask = 0000)
@@ -109,7 +121,11 @@ EOF;
 
   /**
    * Captures those chmod commands that fail.
+<<<<<<< HEAD
    * 
+=======
+   *
+>>>>>>> fos_1.5.13
    * @see http://www.php.net/set_error_handler
    */
   public function handleError($no, $string, $file, $line, $context)

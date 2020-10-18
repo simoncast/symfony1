@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage test
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfTesterRequest.class.php 27845 2010-02-10 19:46:03Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfTesterRequest extends sfTester
 {
@@ -45,12 +45,7 @@ class sfTesterRequest extends sfTester
    */
   public function isParameter($key, $value)
   {
-    if(is_array($value))
-    {
-      $this->tester->is_deeply($this->request->getParameter($key),$value,sprintf('request parameter "%s" matches',$key));
-    } else {
-      $this->tester->is($this->request->getParameter($key), $value, sprintf('request parameter "%s" is "%s"', $key, $value));
-    }
+    $this->tester->is($this->request->getParameter($key), $value, sprintf('request parameter "%s" is "%s"', $key, $value));
 
     return $this->getObjectToReturn();
   }

@@ -35,7 +35,11 @@ $t->is($months[2], 'févr.', '->configure() automatically changes the date forma
 
 $w = new sfWidgetFormI18nDate(array('culture' => 'fr', 'month_format' => 'number'));
 $months = $w->getOption('months');
+<<<<<<< HEAD
 $t->is($months[2], 2, '->configure() automatically changes the date format for the given culture');
+=======
+$t->is($months[2], '02', '->configure() automatically changes the date format for the given culture');
+>>>>>>> fos_1.5.13
 
 try
 {

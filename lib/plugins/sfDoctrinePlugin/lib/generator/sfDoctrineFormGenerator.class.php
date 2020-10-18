@@ -164,7 +164,7 @@ class sfDoctrineFormGenerator extends sfGenerator
           {
             $parent = new ReflectionClass('Doctrine_Record');
             $reflection = new ReflectionClass($modelName);
-            if ($reflection->isSubClassOf($parent))
+            if ($reflection->isSubclassOf($parent))
             {
               $this->pluginModels[$modelName] = $pluginName;
 
@@ -369,18 +369,18 @@ class sfDoctrineFormGenerator extends sfGenerator
         $validatorSubclass = 'Boolean';
         break;
       case 'string':
-        if ($column->getDefinitionKey('email'))
-        {
-          $validatorSubclass = 'Email';
-        }
-        else if ($column->getDefinitionKey('regexp'))
-        {
-          $validatorSubclass = 'Regex';
-        }
-        else
-        {
-          $validatorSubclass = 'String';
-        }
+    		if ($column->getDefinitionKey('email'))
+    		{
+    		  $validatorSubclass = 'Email';
+    		}
+    		else if ($column->getDefinitionKey('regexp'))
+    		{
+    		  $validatorSubclass = 'Regex';
+    		}
+    		else
+    		{
+    		  $validatorSubclass = 'String';
+    		}
         break;
       case 'clob':
       case 'blob':

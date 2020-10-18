@@ -14,7 +14,11 @@
  * @package    symfony
  * @subpackage view
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfPartialView.class.php 31928 2011-01-29 16:02:51Z Kris.Wallsmith $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfPartialView extends sfPHPView
 {

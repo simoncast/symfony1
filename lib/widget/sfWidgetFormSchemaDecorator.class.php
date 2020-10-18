@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage widget
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfWidgetFormSchemaDecorator.class.php 30762 2010-08-25 12:33:33Z fabien $
+ * @version    SVN: $Id$
  */
 class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 {
@@ -41,7 +41,11 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
   /**
    * Returns the decorated widget.
    *
+<<<<<<< HEAD
    * @param sfWidget The decorated widget
+=======
+   * @return sfWidget The decorated widget
+>>>>>>> fos_1.5.13
    */
   public function getWidget()
   {
@@ -51,12 +55,23 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
   /**
    * Renders the widget.
    *
+<<<<<<< HEAD
    * @param  string $name        The element name
    * @param  string $values      The value displayed in this widget
    * @param  array  $attributes  An array of HTML attributes to be merged with the default HTML attributes
    * @param  array  $errors      An array of errors for the field
    *
    * @see sfWidget
+=======
+   * @param  string $name       The element name
+   * @param  array  $values     The value displayed in this widget
+   * @param  array  $attributes An array of HTML attributes to be merged with the default HTML attributes
+   * @param  array  $errors     An array of errors for the field
+   *
+   * @see sfWidget
+   *
+   * @return string
+>>>>>>> fos_1.5.13
    */
   public function render($name, $values = array(), $attributes = array(), $errors = array())
   {
@@ -65,6 +80,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function addFormFormatter($name, sfWidgetFormSchemaFormatter $formatter)
   {
@@ -83,6 +102,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setFormFormatterName($name)
   {
@@ -93,6 +116,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getFormFormatterName()
   {
@@ -101,6 +128,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getFormFormatter()
   {
@@ -109,6 +140,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setNameFormat($format)
   {
@@ -119,6 +154,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getNameFormat()
   {
@@ -127,6 +166,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setLabels(array $labels)
   {
@@ -137,6 +180,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getLabels()
   {
@@ -145,6 +192,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setLabel($name, $value = null)
   {
@@ -162,6 +213,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getLabel($name = null)
   {
@@ -170,6 +225,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setHelps(array $helps)
   {
@@ -180,6 +239,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getHelps()
   {
@@ -188,6 +251,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setHelp($name, $help)
   {
@@ -198,6 +265,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getHelp($name)
   {
@@ -234,6 +305,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function renderField($name, $value = null, $attributes = array(), $errors = array())
   {
@@ -242,6 +317,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchemaFormatter
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function generateLabel($name)
   {
@@ -250,6 +329,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchemaFormatter
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function generateLabelName($name)
   {
@@ -258,6 +341,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function generateName($name)
   {
@@ -266,6 +353,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getParent()
   {
@@ -274,6 +365,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setParent(sfWidgetFormSchema $parent = null)
   {
@@ -284,6 +379,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getFields()
   {
@@ -292,6 +391,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function getPositions()
   {
@@ -300,6 +403,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function setPositions(array $positions)
   {
@@ -310,6 +417,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function moveField($field, $action, $pivot = null)
   {
@@ -318,6 +429,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function offsetExists($name)
   {
@@ -326,6 +441,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function offsetGet($name)
   {
@@ -334,6 +453,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function offsetSet($name, $widget)
   {
@@ -342,6 +465,10 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
 
   /**
    * @see sfWidgetFormSchema
+<<<<<<< HEAD
+=======
+   * @inheritdoc
+>>>>>>> fos_1.5.13
    */
   public function offsetUnset($name)
   {

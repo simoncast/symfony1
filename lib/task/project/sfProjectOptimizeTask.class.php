@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage task
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfProjectOptimizeTask.class.php 32707 2011-07-01 12:54:40Z fabien $
+ * @version    SVN: $Id$
  */
 class sfProjectOptimizeTask extends sfBaseTask
 {
@@ -51,6 +51,12 @@ EOF;
     $modules = $this->findModules();
     $target = sfConfig::get('sf_cache_dir').'/'.$arguments['application'].'/'.$arguments['env'].'/config/configuration.php';
 
+<<<<<<< HEAD
+=======
+    $current_umask = umask();
+    umask(0000);
+
+>>>>>>> fos_1.5.13
     // remove existing optimization file
     if (file_exists($target))
     {
@@ -58,7 +64,11 @@ EOF;
     }
 
     // recreate configuration without the cache
+<<<<<<< HEAD
     $this->setConfiguration($this->createConfiguration($this->configuration->getApplication(), $this->configuration->getEnvironment()));
+=======
+    $this->setConfiguration($this->createConfiguration($arguments['application'], $arguments['env']));
+>>>>>>> fos_1.5.13
 
     // initialize the context
     sfContext::createInstance($this->configuration);
@@ -66,7 +76,22 @@ EOF;
     // force cache generation for generated modules
     foreach ($modules as $module)
     {
+<<<<<<< HEAD
       $this->configuration->getConfigCache()->import('modules/'.$module.'/config/generator.yml', false, true);
+=======
+      $this->logSection('module', $module);
+
+      try
+      {
+        $this->configuration->getConfigCache()->checkConfig('modules/'.$module.'/config/generator.yml',  true);
+      }
+      catch (Exception $e)
+      {
+        $this->dispatcher->notifyUntil(new sfEvent($e, 'application.throw_exception'));
+
+        $this->logSection($module, $e->getMessage(), null, 'ERROR');
+      }
+>>>>>>> fos_1.5.13
     }
 
     $templates = $this->findTemplates($modules);
@@ -83,6 +108,11 @@ EOF;
 
     $this->logSection('file+', $target);
     file_put_contents($target, '<?php return '.var_export($data, true).';');
+<<<<<<< HEAD
+=======
+
+    umask($current_umask);
+>>>>>>> fos_1.5.13
   }
 
   protected function optimizeGetControllerDirs($modules)

@@ -6,13 +6,13 @@
  * @package    ##PROJECT_NAME##
  * @subpackage <?php echo $this->getModuleName()."\n" ?>
  * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: configuration.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration extends sfModelGeneratorConfiguration
 {
-<?php include __DIR__.'/actionsConfiguration.php' ?>
+<?php include dirname(__FILE__).'/actionsConfiguration.php' ?>
 
-<?php include __DIR__.'/fieldsConfiguration.php' ?>
+<?php include dirname(__FILE__).'/fieldsConfiguration.php' ?>
 
   /**
    * Gets the form class name.
@@ -41,9 +41,9 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfigu
 <?php unset($this->config['filter']['class']) ?>
   }
 
-<?php include __DIR__.'/paginationConfiguration.php' ?>
+<?php include dirname(__FILE__).'/paginationConfiguration.php' ?>
 
-<?php include __DIR__.'/sortingConfiguration.php' ?>
+<?php include dirname(__FILE__).'/sortingConfiguration.php' ?>
 
   public function getTableMethod()
   {

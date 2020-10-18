@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
 
 /**
  * Dumps data to the fixtures directory.
@@ -18,7 +18,7 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineDataDumpTask.class.php 23922 2009-11-14 14:58:38Z fabien $
+ * @version    SVN: $Id$
  */
 class sfDoctrineDataDumpTask extends sfDoctrineBaseTask
 {

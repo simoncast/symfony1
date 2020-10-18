@@ -8,7 +8,11 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+=======
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+>>>>>>> fos_1.5.13
 
 /**
  * Generates a Doctrine admin module.
@@ -16,7 +20,11 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfDoctrineGenerateAdminTask.class.php 28809 2010-03-26 17:19:58Z Jonathan.Wage $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfDoctrineGenerateAdminTask extends sfDoctrineBaseTask
 {

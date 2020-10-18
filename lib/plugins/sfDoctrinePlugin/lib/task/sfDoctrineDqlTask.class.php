@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
 
 /**
  * Creates database for current model.
@@ -18,7 +18,7 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineDqlTask.class.php 24625 2009-12-01 00:05:40Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfDoctrineDqlTask extends sfDoctrineBaseTask
 {

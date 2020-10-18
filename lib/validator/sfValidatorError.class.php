@@ -14,7 +14,11 @@
  * @package    symfony
  * @subpackage validator
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfValidatorError.class.php 15393 2009-02-10 12:58:49Z fabien $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfValidatorError extends Exception implements Serializable
 {

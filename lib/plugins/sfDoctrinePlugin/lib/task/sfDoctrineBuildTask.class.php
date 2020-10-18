@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
 
 /**
  * Generates code based on your schema.
@@ -17,7 +17,7 @@ require_once(__DIR__.'/sfDoctrineBaseTask.class.php');
  * @package    sfDoctrinePlugin
  * @subpackage task
  * @author     Kris Wallsmith <kris.wallsmith@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineBuildTask.class.php 23156 2009-10-17 13:08:16Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfDoctrineBuildTask extends sfDoctrineBaseTask
 {

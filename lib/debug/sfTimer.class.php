@@ -14,7 +14,11 @@
  * @package    symfony
  * @subpackage util
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+<<<<<<< HEAD
  * @version    SVN: $Id: sfTimer.class.php 9079 2008-05-20 00:38:07Z Carl.Vondrick $
+=======
+ * @version    SVN: $Id$
+>>>>>>> fos_1.5.13
  */
 class sfTimer
 {

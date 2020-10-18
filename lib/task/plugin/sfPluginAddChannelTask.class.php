@@ -16,7 +16,7 @@ require_once(__DIR__.'/sfPluginBaseTask.class.php');
  * @package    symfony
  * @subpackage task
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfPluginAddChannelTask.class.php 11750 2008-09-23 18:33:28Z Carl.Vondrick $
+ * @version    SVN: $Id$
  */
 class sfPluginAddChannelTask extends sfPluginBaseTask
 {

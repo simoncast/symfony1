@@ -14,7 +14,7 @@
  * @package    symfony
  * @subpackage util
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfBrowser.class.php 21908 2009-09-11 12:06:21Z fabien $
+ * @version    SVN: $Id$
  */
 class sfBrowser extends sfBrowserBase
 {
@@ -52,7 +52,6 @@ class sfBrowser extends sfBrowserBase
       $this->context->getUser()->shutdown();
       $this->context->getStorage()->shutdown();
     }
-
   }
 
   /**

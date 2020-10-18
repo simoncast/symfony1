@@ -10,7 +10,7 @@
 
 require_once(__DIR__.'/../../bootstrap/unit.php');
 
-$t = new lime_test(93);
+$t = new lime_test(95);
 
 // ::stringToArray()
 $t->diag('::stringToArray()');
@@ -26,6 +26,8 @@ $tests = array(
   'foo1="l\'autre" foo=bar' => array('foo1' => 'l\'autre', 'foo' => 'bar'),
   'foo1="l"autre" foo=bar' => array('foo1' => 'l"autre', 'foo' => 'bar'),
   'foo_1=bar_1' => array('foo_1' => 'bar_1'),
+  'data-foo=bar' => array('data-foo' => 'bar'),
+  'data-foo-bar=baz' => array('data-foo-bar' => 'baz'),
 );
 
 foreach ($tests as $string => $attributes)
@@ -35,7 +37,7 @@ foreach ($tests as $string => $attributes)
 
 // ::isUTF8()
 $t->diag('::isUTF8()');
-$t->is('été', true, '::isUTF8() returns true if the parameter is an UTF-8 encoded string');
+$t->is(sfToolkit::isUTF8('été'), true, '::isUTF8() returns true if the parameter is an UTF-8 encoded string');
 $t->is(sfToolkit::isUTF8('AZERTYazerty1234-_'), true, '::isUTF8() returns true if the parameter is an UTF-8 encoded string');
 $t->is(sfToolkit::isUTF8('AZERTYazerty1234-_'.chr(254)), false, '::isUTF8() returns false if the parameter is not an UTF-8 encoded string');
 // check a very long string
